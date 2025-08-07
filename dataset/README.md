@@ -1,6 +1,23 @@
 #Datasets
 
-1.ComStock and ResStock Dataset-
+
+### List of Datasets Used in our experiments
+
+| **Dataset** | **No. of Buildings** | **Interval (min)** | **No. of Loads** | **Load Names** |
+|-------------|------------|--------------------|------------|----------------|
+| **Prayas**  | 118        | 15, 30, 60         | 7          | Inverter (65%), Air-coolers (30%), Air-conditioners (15%), Fridge (70%), TV (85%), Washing Machine (50%), Water Heater (40%) |
+| [**Comstock**](https://comstock.nrel.gov/page/datasets)| 1000       | 15, 30, 60         | 6          | Cooling (76%), Fans (90%), Heat Rejection (11%), Heating (44%), Refrigeration (31%), Water Systems (72%) |
+| **Restock** | 1000       | 15, 30, 60         | 11         | Ceiling Fan (66%), Clothes Dryer (66%), Clothes Washer (68%), Cooling (75%), Fans (56%), Dishwasher (66%), Freezer (18%), Heating (26%), Heating Fans (72%), Hot Water (19%), Garage Lighting (28%) |
+| **CER**     | 3482       | 30, 60             | 7          | Cooling (75%), Dishwasher (66%), Pluginheater (31%), Tumbledryer (68%), Washingmachine (98%), Waterheater (56%), Desktop Computer (47%) |
+
+> **Note**: Percentages in parentheses indicate the proportion of buildings where the appliance is present.
+
+
+### ComStock – Commercial Building Dataset
+ComStock models the energy performance of the U.S. commercial building stock, including over 350,000 representative building models spanning more than 14 commercial building types like offices, schools, retail stores, warehouses, and hospitals. It incorporates data from the Commercial Building Energy Consumption Survey (CBECS) and other sources to reflect real-world building characteristics across various climate zones and geographies. The dataset provides both annual summaries and 15-minute end-use load profiles, offering detailed insights into energy use for HVAC, lighting, plug loads, refrigeration, and more. ComStock also supports dozens of retrofit scenarios—such as electrification, high-efficiency HVAC systems, lighting upgrades, and building envelope improvements—helping researchers, utilities, and policymakers evaluate energy-saving opportunities and demand-side management strategies. The results are accessible through the ComStock Data Viewer, as well as full downloadable datasets hosted on NREL's portals.
+
+
+### 
 The ComStock and ResStock datasets are both developed by the National Renewable Energy Laboratory (NREL) under the support of the U.S. Department of Energy (DOE) to model and analyze energy consumption in the built environment. These datasets use OpenStudio and EnergyPlus simulation engines, are calibrated using real-world data (like utility bills and smart meter readings), and are publicly accessible. Both provide high-resolution data, including annual and 15-minute time-series energy consumption, and are intended to support national efforts in energy efficiency, decarbonization, grid planning, and policy evaluation. They are released and maintained as part of the Open Energy Data Initiative (OEDI) and are regularly updated with expanded coverage, improved calibration, and new retrofit scenarios.
 
 1.1. ComStock – Commercial Building Dataset
@@ -26,8 +43,200 @@ https://github.com/adrienpetralia/TransApp/tree/master/data
 4. Prayas Energy Dataset-
 The Prayas eMARC (Monitoring and Analysis of Residential Electricity Consumption) dataset is a rich, high-resolution smart metering dataset collected by Prayas (Energy Group) in India. It captures detailed electricity consumption data from 115 residential households across urban, semi-urban, and rural areas of Maharashtra and Uttar Pradesh, spanning from January 2018 to June 2020. Each household was equipped with two GPRS-enabled smart meters—one at the main supply line and another on a major appliance such as a refrigerator or air conditioner—recording minute-level data on active power, energy consumption, voltage, current, and power factor. This allows for both whole-house and appliance-level monitoring. The dataset also includes 15-minute aggregated versions of the same data, making it suitable for a variety of time-series modeling tasks. Alongside the consumption data, Prayas collected detailed household survey data, which includes appliance ownership, usage patterns, and socioeconomic details, enabling context-aware analysis. The sample was selected to ensure diversity across income levels and appliance types. The eMARC dataset supports research in areas such as load disaggregation, demand response, power quality assessment, energy behavior modeling, and the impact of socio-technical factors on electricity usage in Indian households. It is publicly available for academic and non-commercial research.
 
-🔗 Access Prayas Energy Dataset:
-https://dataverse.harvard.edu/dataverse/eMARC?q=&types=files&sort=dateSort&order=desc&page=1
+## Project Overview
+
+The project implements a Non-Intrusive Load Monitoring (NILM) system that processes raw energy consumption data and uses machine learning models to identify specific appliances operating in households. The system works with data collected from smart meters at different time intervals (15-minute, 30-minute, and 1-hour) and applies various classification algorithms to detect appliance usage patterns.
+
+## Repository Structure
+
+```
+AI IoT Lab/
+├── 2019 Appliance Datasets/          # Appliance-specific datasets (2019 only)
+│   ├── Air_Conditioners_dataset.csv
+│   ├── Air_Coolers_dataset.csv
+│   ├── Fridge_dataset.csv
+│   ├── Heating_and_Cooling_appliances_dataset.csv
+│   ├── Inverter_dataset.csv
+│   ├── Kitchen_appliances_dataset.csv
+│   ├── Lights_and_Fans_dataset.csv
+│   ├── TV_dataset.csv
+│   ├── Washing_Machine_dataset.csv
+│   └── Water_heaters_dataset.csv
+├── Overall Appliance Datasets/        # Complete appliance datasets (2018-2020)
+│   ├── Air_Conditioners_dataset.csv
+│   ├── Air_Coolers_dataset.csv
+│   ├── Fridge_dataset.csv
+│   ├── Heating_and_Cooling_appliances_dataset.csv
+│   ├── Inverter_dataset.csv
+│   ├── Kitchen_appliances_dataset.csv
+│   ├── Lights_and_Fans_dataset.csv
+│   ├── TV_dataset.csv
+│   ├── Washing_Machine_dataset.csv
+│   └── Water_heaters_dataset.csv
+├── Codes/                             # Data processing and ML pipeline scripts
+│   ├── 1HourDataProcessing.py
+│   ├── 15MinuteDataProcessing.py
+│   ├── 30MinuteDataProcessing.py
+│   ├── AppliancePipeline.py
+│   ├── NILMDataProcessor_2019.py
+│   └── NILMDataProcessor.py
+└── Prayas Datasets/                   # Raw and processed energy consumption data
+    ├── 1_hour_data_enhanced.csv
+    ├── 1_hour_data_with_household_id.csv
+    ├── 15_minute_data_enhanced.csv
+    ├── 15_minute_data_with_household_id.csv
+    ├── 30_minute_data_enhanced.csv
+    ├── 30_minute_data_with_household_id.csv
+    ├── eMARC load blocks.csv
+    ├── eMARC_household_survey_summary.xlsx
+    └── Household-Deployment basic info.xlsx
+```
+
+## Data Processing Pipeline
+
+### Phase 1: Time-Interval Data Processing
+
+The raw energy consumption data is processed at three different time intervals:
+
+1. **15-minute intervals** (`15MinuteDataProcessing.py`)
+2. **30-minute intervals** (`30MinuteDataProcessing.py`)
+3. **1-hour intervals** (`1HourDataProcessing.py`)
+
+Each processing script converts the raw load blocks file and household deployment information into two dataset formats:
+
+#### Basic Dataset Schema:
+- `deployment_id`: Unique identifier for each deployment
+- `block`: Time block identifier
+- `date`: Date of measurement
+- `Load (kW)`: Power consumption in kilowatts
+- `household_id`: Unique household identifier
+
+#### Enhanced Dataset Schema:
+- `deployment_id`: Unique identifier for each deployment
+- `block`: Time block identifier  
+- `date`: Date of measurement
+- `Load (kW)`: Power consumption in kilowatts
+- `household_id_x`: Primary household identifier
+- `household_id_y`: Secondary household identifier
+- `Deployment type`: Type of smart meter deployment
+- `Region`: Geographic region of the household
+- `Household type`: Classification of household characteristics
+
+### Phase 2: NILM Data Processing
+
+Two specialized processors extract appliance-specific datasets:
+
+- **`NILMDataProcessor.py`**: Processes complete dataset (January 1, 2018 - June 30, 2020)
+- **`NILMDataProcessor_2019.py`**: Processes 2019-only dataset
+
+**Data Quality Filtering**: Only households with at least 50% of the maximum number of readings as non-empty values are included in the final appliance datasets.
+
+### Phase 3: Machine Learning Pipeline
+
+The `AppliancePipeline.py` script implements a comprehensive machine learning pipeline with the following components:
+
+#### Classification Tasks
+
+**Single-Output Classification**: 
+- Trains models on each of the 10 individual appliance datasets
+- Predicts presence/absence of specific appliances
+
+**Multi-Output Classification**:
+- Groups appliances into 3 categories:
+  - **Kitchen Appliances**: Mixer, Fridge, Microwave
+  - **Lights and Fans**: Lights, Ceiling Fans
+  - **Heating and Cooling**: Water Heater, Air Cooler, Air Conditioner
+
+#### Machine Learning Models
+
+The pipeline trains and evaluates 5 different algorithms:
+
+1. **Random Forest**: Ensemble method using multiple decision trees
+2. **XGBoost**: Gradient boosting framework optimized for performance
+3. **Arsenal**: Time series classification ensemble method
+4. **Rocket**: Random convolutional kernel transform for time series
+5. **Lightning**: Fast linear models for large-scale machine learning
+
+## Appliance Categories
+
+### Individual Appliances (10 types):
+- Air Conditioners
+- Air Coolers  
+- Refrigerators
+- Water Heaters
+- Inverters
+- Televisions
+- Washing Machines
+
+### Appliance Groups (3 categories):
+- Kitchen Appliances (combined)
+- Lights and Fans (combined)
+- Heating and Cooling (combined)
+
+## Getting Started
+
+### Prerequisites
+
+```bash
+# Required Python packages
+pip install pandas numpy scikit-learn xgboost
+pip install sktime  # for Arsenal and Rocket
+pip install lightning-ml  # for Lightning models
+```
+
+### Running the Pipeline
+
+1. **Data Processing**:
+```bash
+# Process data at different time intervals
+python 15MinuteDataProcessing.py
+python 30MinuteDataProcessing.py  
+python 1HourDataProcessing.py
+```
+
+2. **NILM Dataset Generation**:
+```bash
+# Generate appliance-specific datasets
+python NILMDataProcessor.py        # Full dataset (2018-2020)
+python NILMDataProcessor_2019.py   # 2019 only
+```
+
+3. **Machine Learning Training**:
+```bash
+# Train and evaluate all models
+python AppliancePipeline.py
+```
+
+## Data Sources
+
+The project uses data from the eMARC (Energy Monitoring and Analytics for Rural Communities) initiative, which provides:
+
+- **Load Blocks**: Raw energy consumption measurements
+- **Household Survey**: Demographic and appliance ownership information  
+- **Deployment Information**: Technical details about smart meter installations
+
+## Results and Applications
+
+This NILM system enables:
+
+- **Energy Efficiency Analysis**: Identify high-consumption appliances
+- **Demand Response**: Predict and manage peak energy usage
+- **Appliance Monitoring**: Non-intrusive detection of appliance operations
+- **Rural Energy Planning**: Understand consumption patterns in rural households
+- **Smart Grid Integration**: Enable intelligent energy distribution systems
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit pull requests, report bugs, or suggest new features.
+
+## License
+
+This project is part of academic research. Please cite appropriately if using this work.
+
+## Contact
+
+For questions about this project, please refer to the AI IoT Lab documentation or contact the project maintainers.
+
 
 
 
