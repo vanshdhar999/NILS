@@ -1,6 +1,23 @@
 #Datasets
 
-1.ComStock and ResStock Dataset-
+
+### List of Datasets Used in our experiments
+
+| **Dataset** | **No. of Buildings** | **Interval (min)** | **No. of Loads** | **Load Names** |
+|-------------|------------|--------------------|------------|----------------|
+| **Prayas**  | 118        | 15, 30, 60         | 7          | Inverter (65%), Air-coolers (30%), Air-conditioners (15%), Fridge (70%), TV (85%), Washing Machine (50%), Water Heater (40%) |
+| [**Comstock**](https://comstock.nrel.gov/page/datasets)| 1000       | 15, 30, 60         | 6          | Cooling (76%), Fans (90%), Heat Rejection (11%), Heating (44%), Refrigeration (31%), Water Systems (72%) |
+| **Restock** | 1000       | 15, 30, 60         | 11         | Ceiling Fan (66%), Clothes Dryer (66%), Clothes Washer (68%), Cooling (75%), Fans (56%), Dishwasher (66%), Freezer (18%), Heating (26%), Heating Fans (72%), Hot Water (19%), Garage Lighting (28%) |
+| **CER**     | 3482       | 30, 60             | 7          | Cooling (75%), Dishwasher (66%), Pluginheater (31%), Tumbledryer (68%), Washingmachine (98%), Waterheater (56%), Desktop Computer (47%) |
+
+> **Note**: Percentages in parentheses indicate the proportion of buildings where the appliance is present.
+
+
+### ComStock – Commercial Building Dataset
+ComStock models the energy performance of the U.S. commercial building stock, including over 350,000 representative building models spanning more than 14 commercial building types like offices, schools, retail stores, warehouses, and hospitals. It incorporates data from the Commercial Building Energy Consumption Survey (CBECS) and other sources to reflect real-world building characteristics across various climate zones and geographies. The dataset provides both annual summaries and 15-minute end-use load profiles, offering detailed insights into energy use for HVAC, lighting, plug loads, refrigeration, and more. ComStock also supports dozens of retrofit scenarios—such as electrification, high-efficiency HVAC systems, lighting upgrades, and building envelope improvements—helping researchers, utilities, and policymakers evaluate energy-saving opportunities and demand-side management strategies. The results are accessible through the ComStock Data Viewer, as well as full downloadable datasets hosted on NREL's portals.
+
+
+### 
 The ComStock and ResStock datasets are both developed by the National Renewable Energy Laboratory (NREL) under the support of the U.S. Department of Energy (DOE) to model and analyze energy consumption in the built environment. These datasets use OpenStudio and EnergyPlus simulation engines, are calibrated using real-world data (like utility bills and smart meter readings), and are publicly accessible. Both provide high-resolution data, including annual and 15-minute time-series energy consumption, and are intended to support national efforts in energy efficiency, decarbonization, grid planning, and policy evaluation. They are released and maintained as part of the Open Energy Data Initiative (OEDI) and are regularly updated with expanded coverage, improved calibration, and new retrofit scenarios.
 
 1.1. ComStock – Commercial Building Dataset
