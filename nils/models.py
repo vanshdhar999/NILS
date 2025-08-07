@@ -5,6 +5,8 @@ from sktime.classification.interval_based import TimeSeriesForestClassifier, Ran
 from sktime.classification.distance_based import KNeighborsTimeSeriesClassifier
 import logging
 
+
+## The model parameters are partiall adopted from https://github.com/adrienpetralia/ApplianceDetectionBenchmark
 def define_all_classifiers():
     return {
         "Dummy": DummyClassifier(strategy="prior"),
@@ -20,7 +22,8 @@ def define_all_classifiers():
         "KNNeucli": KNeighborsTimeSeriesClassifier(algorithm="auto", distance="euclidean", n_jobs=-1),
     }
 
-def select_classifiers(all_classifiers, selected_model_names):
+def select_classifiers(selected_model_names):
+    all_classifiers = define_all_classifiers()
     selected = {k: v for k, v in all_classifiers.items() if k in selected_model_names}
     missing = [m for m in selected_model_names if m not in selected]
     if missing:
