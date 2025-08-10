@@ -68,3 +68,20 @@ This repository contains the reprodicble dataset, code and results.
 | **Water heaters** | 0.4167 | 0.4899 | 0.6912 | 0.6719 | 0.7143 | 0.7375 | **0.7778** | _0.7667_ | 0.7215 | 0.6707 | 0.7172 | 0.7172 | 0.4987 |
 | **Mean** | 0.4289 | 0.4864 | 0.4859 | 0.5152 | 0.5401 | 0.5618 | **0.6657** | 0.6176 | _0.6177_ | 0.5795 | 0.5236 | 0.5473 | 0.4508 |
 
+
+### FILE PATH REFERENCE
+  ## Config
+    #comstock_15min_1week.yml
+    #comstock_30min_1week.yml
+    #comstock_60min_1week.yml
+  ## Datasets
+    #Comstock
+    #Readme
+  ## NILS
+    #_ini.t_.py
+    #detect.py
+    #metrics.py
+    #models.py
+  ## Readme.txt
+  ## Requirements.txt
+
