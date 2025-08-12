@@ -69,19 +69,26 @@ This repository contains the reprodicble dataset, code and results.
 | **Mean** | 0.4289 | 0.4864 | 0.4859 | 0.5152 | 0.5401 | 0.5618 | **0.6657** | 0.6176 | _0.6177_ | 0.5795 | 0.5236 | 0.5473 | 0.4508 |
 
 
-### FILE PATH REFERENCE
-  ## Config
-    #comstock_15min_1week.yml
-    #comstock_30min_1week.yml
-    #comstock_60min_1week.yml
-  ## Datasets
-    #Comstock
-    #Readme
-  ## NILS
-    #_ini.t_.py
-    #detect.py
-    #metrics.py
-    #models.py
-  ## Readme.txt
-  ## Requirements.txt
+## Repository structure
+NILS/
+├── config/
+│   ├── comstock_15min_1week.yml       
+│   ├── comstock_30min_1week.yml      
+│   └── comstock_60min_1week.yml     
+├── dataset/
+│   ├── comstock/
+│   │   ├── comstock_15min_labels.csv
+│   │   ├── comstock_15min_small.csv
+│   │   ├── comstock_30min_labels.csv
+│   │   ├── comstock_30min_small.csv
+│   │   ├── comstock_60min_labels.csv
+│   │   └── comstock_60min_small.csv
+│   └── README.md
+├── nils/
+│   ├── __init__.py
+│   ├── detect.py
+│   ├── metrics.py
+│   └── models.py
+├── README.md
+└── requirements.txt
 
