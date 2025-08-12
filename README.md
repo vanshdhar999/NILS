@@ -75,11 +75,22 @@ This repository contains the reprodicble dataset, code and results.
 python3 -m venv NILS
 Source NILS/bin/activate  # On Windows: NILS\Scripts\activate
 ```
-### 2: Clone the repository:
+### 2: Clone the Repository:
 ```bash
    git clone https://github.com/AI-IoT-Lab/NILS.git
-   cd NILS
+   Cd NILS
 ```
+### 3: Download the test dataset:
+```bash
+   git clone https://github.com/AI-IoT-Lab/NILS/tree/main/dataset/comstock
+
+```
+## Running Test
+### Run Experiments to Reproduce Results:
+```bash
+
+```
+
 
 ## Repository Structure
 ```
