@@ -70,27 +70,28 @@ This repository contains the reprodicble dataset, code and results.
 
 ## Repository Structure
 ```
-NILS/
-├── config/
-│   ├── comstock_15min_1week.yml
-│   ├── comstock_30min_1week.yml
-│   └── comstock_60min_1week.yml
-├── dataset/
-│   ├── comstock/
-│   │   ├── comstock_15min_labels.csv
-│   │   ├── comstock_15min_small.csv
-│   │   ├── comstock_30min_labels.csv
-│   │   ├── comstock_30min_small.csv
-│   │   ├── comstock_60min_labels.csv
-│   │   └── comstock_60min_small.csv
-│   └── README.md
-├── nils/
-│   ├── __init__.py
-│   ├── detect.py
-│   ├── metrics.py
-│   └── models.py
-├── README.md
-└── requirements.txt
+NILS/                                   # Root directory of the project
+├── config/                             # Configuration files for different experiment settings
+│   ├── comstock_15min_1week.yml        # Config for 15-minute interval data, 1 week duration
+│   ├── comstock_30min_1week.yml        # Config for 30-minute interval data, 1 week duration
+│   └── comstock_60min_1week.yml        # Config for 60-minute interval data, 1 week duration
+├── dataset/                            # Folder containing datasets used in the project
+│   ├── comstock/                       # Dataset files related to the Comstock building
+│   │   ├── comstock_15min_labels.csv   # Labels for 15-minute interval data
+│   │   ├── comstock_15min_small.csv    # Small subset of 15-minute interval data
+│   │   ├── comstock_30min_labels.csv   # Labels for 30-minute interval data
+│   │   ├── comstock_30min_small.csv    # Small subset of 30-minute interval data
+│   │   ├── comstock_60min_labels.csv   # Labels for 60-minute interval data
+│   │   └── comstock_60min_small.csv    # Small subset of 60-minute interval data
+│   └── README.md                       # Documentation about the dataset folder and its contents
+├── nils/                               # Core source code of the NILS project
+│   ├── __init__.py                     # Makes this folder a Python package
+│   ├── detect.py                       # Detection algorithms implementation
+│   ├── metrics.py                      # Code for evaluation metrics and performance measures
+│   └── models.py                       # Model definitions and architectures
+├── README.md                           # Main project overview and instructions
+└── requirements.txt                    # List of Python dependencies required for the project
+
 ```
 
 
