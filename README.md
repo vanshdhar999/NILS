@@ -6,7 +6,57 @@ We introduce the problem of **Non-Intrusive Load Surveying (NILS)**, which invol
 In this paper, we formally define the Non-Intrusive Load Surveying (NILS) problem and highlight its practical significance. We also present two key variants of the task: (a) **NILS-Detection**, which involves determining whether specific appliance types (e.g., washing machine, air conditioner) are present in a household; and (b) **NILS-Counting**, which aims to estimate the number of appliances of each type. To evaluate the feasibility of NILS, we conduct a comprehensive benchmarking study using four diverse datasets spanning over 5,600 buildings and more than 25 appliance types from both commercial and residential settings. We implement and compare several state-of-the-art time series classification and regression models for the NILS-Detection and NILS-Counting tasks. Our analysis also examines the impact of sampling intervals (15, 30, and 60 minutes) on model performance. The results demonstrate that NILS is both feasible and scalable, offering a promising direction for surveying household appliance usage using existing smart metering infrastructure. We also discuss key challenges, current limitations, and future research directions to advance the development and deployment of NILS.
 This repository contains the reprodicble dataset, code and results.  
 
+## Installation
+### 1: First Create Separate Virtual Environment:
+```bash
+python3 -m venv NILS
+Source NILS/bin/activate  # On Windows: NILS\Scripts\activate
+```
+### 2: Clone the Repository:
+```bash
+   git clone https://github.com/AI-IoT-Lab/NILS.git
+   Cd NILS
+```
+### 3: Download the test dataset:
+```bash
+   git clone https://github.com/AI-IoT-Lab/NILS/tree/main/dataset/comstock
 
+```
+## Running Test
+Change your Working Directory to the Repo Folder (if not already in it):
+```bash
+Cd NILS
+```
+Run the Test Script:
+```bash
+python nils/detect.py --config config/comstock_15min_1week.yml
+```
+
+## Repository Structure
+```
+NILS/                                   # Root directory of the project
+├── config/                             # Configuration files for different experiment settings
+│   ├── comstock_15min_1week.yml        # Config for 15-minute interval data, 1 week duration
+│   ├── comstock_30min_1week.yml        # Config for 30-minute interval data, 1 week duration
+│   └── comstock_60min_1week.yml        # Config for 60-minute interval data, 1 week duration
+├── dataset/                            # Folder containing datasets used in the project
+│   ├── comstock/                       # Dataset files related to the Comstock building
+│   │   ├── comstock_15min_labels.csv   # Labels for 15-minute interval data
+│   │   ├── comstock_15min_small.csv    # Small subset of 15-minute interval data
+│   │   ├── comstock_30min_labels.csv   # Labels for 30-minute interval data
+│   │   ├── comstock_30min_small.csv    # Small subset of 30-minute interval data
+│   │   ├── comstock_60min_labels.csv   # Labels for 60-minute interval data
+│   │   └── comstock_60min_small.csv    # Small subset of 60-minute interval data
+│   └── README.md                       # Documentation about the dataset folder and its contents
+├── nils/                               # Core source code of the NILS project
+│   ├── __init__.py                     # Makes this folder a Python package
+│   ├── detect.py                       # Detection algorithms implementation
+│   ├── metrics.py                      # Code for evaluation metrics and performance measures
+│   └── models.py                       # Model definitions and architectures
+├── README.md                           # Main project overview and instructions
+└── requirements.txt                    # List of Python dependencies required for the project
+
+```
 ### Results
 
 **Model performance comparison using macro F1 score across different datasets for multiple appliances at 15-minute resolution.**  
@@ -69,54 +119,6 @@ This repository contains the reprodicble dataset, code and results.
 | **Mean** | 0.4289 | 0.4864 | 0.4859 | 0.5152 | 0.5401 | 0.5618 | **0.6657** | 0.6176 | _0.6177_ | 0.5795 | 0.5236 | 0.5473 | 0.4508 |
 
 
-## Installation
-### 1: First Create Separate Virtual Environment:
-```bash
-python3 -m venv NILS
-Source NILS/bin/activate  # On Windows: NILS\Scripts\activate
-```
-### 2: Clone the Repository:
-```bash
-   git clone https://github.com/AI-IoT-Lab/NILS.git
-   Cd NILS
-```
-### 3: Download the test dataset:
-```bash
-   git clone https://github.com/AI-IoT-Lab/NILS/tree/main/dataset/comstock
-
-```
-## Running Test
-### Run Experiments to Reproduce Results:
-```bash
-
-```
-
-
-## Repository Structure
-```
-NILS/                                   # Root directory of the project
-├── config/                             # Configuration files for different experiment settings
-│   ├── comstock_15min_1week.yml        # Config for 15-minute interval data, 1 week duration
-│   ├── comstock_30min_1week.yml        # Config for 30-minute interval data, 1 week duration
-│   └── comstock_60min_1week.yml        # Config for 60-minute interval data, 1 week duration
-├── dataset/                            # Folder containing datasets used in the project
-│   ├── comstock/                       # Dataset files related to the Comstock building
-│   │   ├── comstock_15min_labels.csv   # Labels for 15-minute interval data
-│   │   ├── comstock_15min_small.csv    # Small subset of 15-minute interval data
-│   │   ├── comstock_30min_labels.csv   # Labels for 30-minute interval data
-│   │   ├── comstock_30min_small.csv    # Small subset of 30-minute interval data
-│   │   ├── comstock_60min_labels.csv   # Labels for 60-minute interval data
-│   │   └── comstock_60min_small.csv    # Small subset of 60-minute interval data
-│   └── README.md                       # Documentation about the dataset folder and its contents
-├── nils/                               # Core source code of the NILS project
-│   ├── __init__.py                     # Makes this folder a Python package
-│   ├── detect.py                       # Detection algorithms implementation
-│   ├── metrics.py                      # Code for evaluation metrics and performance measures
-│   └── models.py                       # Model definitions and architectures
-├── README.md                           # Main project overview and instructions
-└── requirements.txt                    # List of Python dependencies required for the project
-
-```
 
 
 
