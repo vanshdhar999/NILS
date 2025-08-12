@@ -105,7 +105,7 @@ NILS/                                   # Root directory of the project
 | **Mean** | 0.4060 | 0.5109 | 0.4491 | 0.4771 | 0.5449 | 0.5533 | **0.5858** | _0.5726_ | 0.5686 | 0.5489 | 0.5436 | 0.5538 | 0.5182 |
 
 
-4. **CER Dataset** Results
+4. **Prayas Dataset** Results
 
 | **Load**   |    **Base** |    **KNNeucli** | **cBOSS** | **eBOSS** | **Arsenal** | **Rocket** |   **Minirocket** | **DrCIF** |    **TSForest** |  **Rise** |    **ConvNet** | **ResNet** |   **ResNetAtt** |
 |:---------------|------:|------:|-----------:|-----------:|------:|------------:|-------:|-----------:|------:|-----------:|------:|------------:|-------:|
