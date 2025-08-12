@@ -70,16 +70,16 @@ This repository contains the reprodicble dataset, code and results.
 
 
 ## Installation
-Clone this repository and create a virtual environment to install the required dependencies.
-
+### 1: First Create Separate Virtual Environment:
 ```bash
-git clone https://github.com/AI-IoT-Lab/NILS.git
-cd NILS
 python3 -m venv NILS
-source NILS/bin/activate  # On Windows: NILS\Scripts\activate
-pip install -r requirements.txt
+Source NILS/bin/activate  # On Windows: NILS\Scripts\activate
 ```
-
+### 2: Clone the repository:
+```bash
+   git clone https://github.com/AI-IoT-Lab/NILS.git
+   cd NILS
+```
 
 ## Repository Structure
 ```
