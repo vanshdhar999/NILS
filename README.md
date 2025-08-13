@@ -133,6 +133,10 @@ NILS/                                   # Root directory of the project
 | **Mean** | 0.4289 | 0.4864 | 0.4859 | 0.5152 | 0.5401 | 0.5618 | **0.6657** | 0.6176 | _0.6177_ | 0.5795 | 0.5236 | 0.5473 | 0.4508 |
 
 
+## Summary
+Across all datasets—Comstock, Restock, Prayas, and CER—advanced time-series classification models like Minirocket, DrCIF, and Arsenal consistently outperform baseline and traditional algorithms. The performance gains are most notable for appliances with distinctive and repetitive usage patterns, while even irregular or less frequent loads benefit from the richer feature extraction capabilities of these models. These results validate the effectiveness of modern machine learning techniques in diverse energy consumption contexts, ranging from commercial and retail to varied residential environments across multiple countries. The findings also underscore the value of high-resolution datasets, which enable models to learn both fine-grained short-term behaviors and broader long-term patterns.
+
+
 ## Contact
 For any queries, please contact Pandarasamy Arjunan (samy@iisc.ac.in) or raise an issue in the repository.
 
