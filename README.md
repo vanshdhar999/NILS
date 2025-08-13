@@ -74,7 +74,7 @@ NILS/                                   # Root directory of the project
 **Model performance comparison using macro F1 score across different datasets for multiple appliances at 15-minute resolution.**  
 *Base refers to a dummy classifier that predicts the majority class.
 
-1. **Comstock** Results.
+1. **Comstock Results**.  The results for the Comstock dataset demonstrate that advanced time-series classification models such as Minirocket, DrCIF, and Arsenal consistently outperform the baseline across most appliance categories. The performance gains are particularly evident for appliances with stable and distinctive load profiles, such as heating, cooling, and water systems. These improvements highlight the ability of modern classifiers to leverage the rich temporal resolution (15-, 30-, and 60-minute intervals) of the dataset to capture both short-term variations and long-term patterns in commercial building energy usage.
 
 | **Load**   |    **Base** |    **KNNeucli** | **cBOSS** | **eBOSS** | **Arsenal** | **Rocket** |   **Minirocket** | **DrCIF** |    **TSForest** |  **Rise** |    **ConvNet** | **ResNet** |   **ResNetAtt** |
 |:---------------|------:|------:|-----------:|-----------:|------:|------------:|-------:|-----------:|------:|-----------:|------:|------------:|-------:|
@@ -86,7 +86,7 @@ NILS/                                   # Root directory of the project
 | **Water Sys.** | 0.4208 | 0.5792 | 0.8616 | 0.7453 | 0.8326 | 0.8428 | **0.9047** | _0.8690_ | 0.7222 | 0.7188 | 0.6993 | 0.7570 | 0.5953 |
 | **Mean** | 0.4263 | 0.6722 | 0.7672 | 0.7445 | _0.8175_ | **0.8269** | 0.8042 | 0.8013 | 0.7353 | 0.7080 | 0.6558 | 0.7305 | 0.6828 |
 
-2. **Restock** Results.
+2. **Restock Results**.This results indicate consistent gains with modern classifiers, with Minirocket and DrCIF emerging as the top performers across the majority of appliances. Improvements are especially notable in appliances with distinct temporal load signatures, suggesting that these models effectively capture both frequency and trend-based patterns in energy usage.
 
 | **Load**   |    **Base** |    **KNNeucli** | **cBOSS** | **eBOSS** | **Arsenal** | **Rocket** |   **Minirocket** | **DrCIF** |    **TSForest** |  **Rise** |    **ConvNet** | **ResNet** |   **ResNetAtt** |
 |:---------------|------:|------:|-----------:|-----------:|------:|------------:|-------:|-----------:|------:|-----------:|------:|------------:|-------:|
@@ -103,7 +103,8 @@ NILS/                                   # Root directory of the project
 | **Lighting garage** | 0.4175 | 0.5497 | 0.4461 | 0.4693 | 0.5821 | _0.5988_ | **0.6258** | 0.5334 | 0.5490 | 0.4691 | 0.5392 | 0.5618 | 0.5080 |
 | **Mean** | 0.4140 | 0.5713 | 0.5780 | 0.6021 | 0.6534 | _0.6621_ | **0.6722** | 0.6504 | 0.6390 | 0.6095 | 0.6043 | 0.6117 | 0.5652 |
 
-3. **CER Dataset** Results.
+3. **CER Dataset Results** .
+   The CER dataset results highlight the superior performance of Minirocket, DrCIF, and Arsenal compared to the baseline, particularly for appliances such as dishwashers, tumble dryers, and water heaters. The improvements demonstrate the advantage of advanced time-series classifiers in accurately identifying load types from complex household energy patterns.
 
 | **Load**   |    **Base** |    **KNNeucli** | **cBOSS** | **eBOSS** | **Arsenal** | **Rocket** |   **Minirocket** | **DrCIF** |    **TSForest** |  **Rise** |    **ConvNet** | **ResNet** |   **ResNetAtt** |
 |:---------------|------:|------:|-----------:|-----------:|------:|------------:|-------:|-----------:|------:|-----------:|------:|------------:|-------:|
@@ -117,7 +118,8 @@ NILS/                                   # Root directory of the project
 | **Mean** | 0.4060 | 0.5109 | 0.4491 | 0.4771 | 0.5449 | 0.5533 | **0.5858** | _0.5726_ | 0.5686 | 0.5489 | 0.5436 | 0.5538 | 0.5182 |
 
 
-4. **Prayas Dataset** Results
+4. **Prayas Dataset Results**
+          Minirocket achieved the highest scores across most appliance types, with notable gains for washing machines, water heaters, and air coolers. DrCIF and Arsenal also showed strong performance, contributing to a substantial improvement in mean accuracy compared to the baseline, reflecting the models’ adaptability to diverse residential usage behaviors.
 
 | **Load**   |    **Base** |    **KNNeucli** | **cBOSS** | **eBOSS** | **Arsenal** | **Rocket** |   **Minirocket** | **DrCIF** |    **TSForest** |  **Rise** |    **ConvNet** | **ResNet** |   **ResNetAtt** |
 |:---------------|------:|------:|-----------:|-----------:|------:|------------:|-------:|-----------:|------:|-----------:|------:|------------:|-------:|
