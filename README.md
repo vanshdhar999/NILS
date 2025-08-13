@@ -1,10 +1,22 @@
 ## Non-Intrusive Load Surveying (NILS)
-
 ![](NILS.png)
 We introduce the problem of **Non-Intrusive Load Surveying (NILS)**, which involves identifying and estimating the count of electrical appliances in buildings using only aggregate electricity consumption data from a single smart meter, without the need for intrusive monitoring or device-level instrumentation. Unlike Non-Intrusive Load Monitoring (NILM), which aims to disaggregate energy usage into appliance-level operational profiles, NILS focuses solely on detecting the presence of appliances, irrespective of their usage frequency or duration. This shift in focus makes NILS particularly relevant for applications such as energy auditing, targeted demand response, appliance stock estimation, and personalized energy feedback, where knowledge of appliance inventory is more critical than fine-grained usage patterns.
 
 In this paper, we formally define the Non-Intrusive Load Surveying (NILS) problem and highlight its practical significance. We also present two key variants of the task: (a) **NILS-Detection**, which involves determining whether specific appliance types (e.g., washing machine, air conditioner) are present in a household; and (b) **NILS-Counting**, which aims to estimate the number of appliances of each type. To evaluate the feasibility of NILS, we conduct a comprehensive benchmarking study using four diverse datasets spanning over 5,600 buildings and more than 25 appliance types from both commercial and residential settings. We implement and compare several state-of-the-art time series classification and regression models for the NILS-Detection and NILS-Counting tasks. Our analysis also examines the impact of sampling intervals (15, 30, and 60 minutes) on model performance. The results demonstrate that NILS is both feasible and scalable, offering a promising direction for surveying household appliance usage using existing smart metering infrastructure. We also discuss key challenges, current limitations, and future research directions to advance the development and deployment of NILS.
 This repository contains the reprodicble dataset, code and results.  
+
+## **Features**
+
+- **Multi-Dataset Integration** – Combines energy consumption data from diverse sources (ComStock, ResStock, Prayas, and CER) covering both residential and commercial sectors.
+- **Appliance-Level Load Profiles** – Provides detailed time-series data for multiple appliance categories, enabling fine-grained analysis.
+- **Multiple Temporal Resolutions** – Offers synchronized load data at 15-minute, 30-minute, and 60-minute intervals for flexible modeling.
+- **Representative Sampling** – Includes curated subsets of buildings/households to ensure coverage across different climates, building types, and socio-economic groups.
+- **Standardized Appliance Labels** – Harmonized appliance naming conventions across datasets for consistency in analysis.
+- **Clean & Preprocessed Data** – Missing values handled, erroneous entries removed, and timestamps aligned for ready-to-use datasets.
+- **Public & Restricted Dataset Support** – Handles both open-access datasets and restricted-access datasets with placeholder samples when full access is unavailable.
+- **Scalable Repository Structure** – Organized file hierarchy to accommodate raw data, processed data, and analysis scripts.
+- **Research-Ready** – Suitable for load disaggregation, demand response modeling, appliance usage prediction, and other energy analytics tasks.
+
 
 ## Installation
 ### 1: First Create Separate Virtual Environment:
@@ -60,13 +72,13 @@ NILS/                                   # Root directory of the project
 ### Results
 
 **Model performance comparison using macro F1 score across different datasets for multiple appliances at 15-minute resolution.**  
-*Base refers to a dummy classifier that predicts the majority class. The best scores for each appliance are shown in bold, and the second-best scores are underlined.*
+*Base refers to a dummy classifier that predicts the majority class.
 
 1. **Comstock** Results.
 
 | **Load**   |    **Base** |    **KNNeucli** | **cBOSS** | **eBOSS** | **Arsenal** | **Rocket** |   **Minirocket** | **DrCIF** |    **TSForest** |  **Rise** |    **ConvNet** | **ResNet** |   **ResNetAtt** |
 |:---------------|------:|------:|-----------:|-----------:|------:|------------:|-------:|-----------:|------:|-----------:|------:|------------:|-------:|
-| **Cooling** | 0.4329 | 0.7298 | **0.8438** | 0.8085 | ****0.8395*** | 0.8270 | 0.8166 | 0.8244 | 0.7942 | 0.7734 | 0.7365 | 0.7853 | 0.6621 |
+| **Cooling** | 0.4329 | 0.7298 | **0.8438** | 0.8085 | ***0.8395*** | 0.8270 | 0.8166 | 0.8244 | 0.7942 | 0.7734 | 0.7365 | 0.7853 | 0.6621 |
 | **Fans** | 0.4746 | 0.6757 | **0.8316** | 0.7119 | _0.8036_ | **0.8316** | 0.7477 | 0.7881 | 0.7184 | 0.6400 | 0.5272 | 0.7841 | 0.6334 |
 | **Heat Rej.** | 0.4690 | 0.5773 | 0.4959 | 0.6036 | _0.6603_ | **0.6792** | 0.6191 | 0.5616 | 0.4895 | 0.5224 | 0.5095 | 0.4927 | 0.5631 |
 | **Heating** | 0.3548 | 0.6959 | 0.7516 | 0.7689 | 0.8346 | **0.8730** | _0.8625_ | 0.8505 | 0.8415 | 0.7863 | 0.7416 | 0.7742 | 0.8433 |
@@ -74,7 +86,7 @@ NILS/                                   # Root directory of the project
 | **Water Sys.** | 0.4208 | 0.5792 | 0.8616 | 0.7453 | 0.8326 | 0.8428 | **0.9047** | _0.8690_ | 0.7222 | 0.7188 | 0.6993 | 0.7570 | 0.5953 |
 | **Mean** | 0.4263 | 0.6722 | 0.7672 | 0.7445 | _0.8175_ | **0.8269** | 0.8042 | 0.8013 | 0.7353 | 0.7080 | 0.6558 | 0.7305 | 0.6828 |
 
-3. **Restock** Results.
+2. **Restock** Results.
 
 | **Load**   |    **Base** |    **KNNeucli** | **cBOSS** | **eBOSS** | **Arsenal** | **Rocket** |   **Minirocket** | **DrCIF** |    **TSForest** |  **Rise** |    **ConvNet** | **ResNet** |   **ResNetAtt** |
 |:---------------|------:|------:|-----------:|-----------:|------:|------------:|-------:|-----------:|------:|-----------:|------:|------------:|-------:|
@@ -117,6 +129,10 @@ NILS/                                   # Root directory of the project
 | **Washing machine** | 0.3913 | 0.4759 | 0.4469 | 0.5510 | 0.7437 | 0.7437 | 0.7544 | 0.6707 | 0.6998 | 0.5510 | **0.8090** | _0.7772_ | 0.4367 |
 | **Water heaters** | 0.4167 | 0.4899 | 0.6912 | 0.6719 | 0.7143 | 0.7375 | **0.7778** | _0.7667_ | 0.7215 | 0.6707 | 0.7172 | 0.7172 | 0.4987 |
 | **Mean** | 0.4289 | 0.4864 | 0.4859 | 0.5152 | 0.5401 | 0.5618 | **0.6657** | 0.6176 | _0.6177_ | 0.5795 | 0.5236 | 0.5473 | 0.4508 |
+
+
+## Contact
+For any queries, please contact Pandarasamy Arjunan (samy@iisc.ac.in) or raise an issue in the repository.
 
 
 
