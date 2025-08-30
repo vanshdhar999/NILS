@@ -28,8 +28,9 @@ appliance_list:
 # List of models to train and evaluate (all supported models from sktime)
 models:
   - Dummy
-  - Rocket
-  - Arsenal
+  - MVTSTransformerClassifier
+  # - Rocket
+  # - Arsenal
   # - Minirocket
   # - TimeSeriesForest
   # - Rise

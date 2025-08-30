@@ -3,6 +3,7 @@ from sktime.classification.kernel_based import Arsenal, RocketClassifier
 from sktime.classification.dictionary_based import IndividualBOSS, BOSSEnsemble, ContractableBOSS
 from sktime.classification.interval_based import TimeSeriesForestClassifier, RandomIntervalSpectralEnsemble, DrCIF
 from sktime.classification.distance_based import KNeighborsTimeSeriesClassifier
+from sktime.classification.deep_learning import MVTSTransformerClassifier
 import logging
 
 
@@ -20,6 +21,14 @@ def define_all_classifiers():
         "eBOSS": BOSSEnsemble(n_jobs=-1),
         "cBOSS": ContractableBOSS(n_jobs=-1),
         "KNNeucli": KNeighborsTimeSeriesClassifier(algorithm="auto", distance="euclidean", n_jobs=-1),
+        "MVTSTransformerClassifier": MVTSTransformerClassifier(
+            d_model=64,  # Reduced model dimension for faster training
+            num_epochs=5,  # Quick test with 5 epochs first
+            batch_size=32,  # Add batch size for better training
+            learning_rate=0.001,  # Add learning rate
+            dropout=0.1,  # Add dropout for regularization
+            verbose=True  # Enable training progress logging
+        )
     }
 
 def select_classifiers(selected_model_names):

@@ -6,7 +6,7 @@ packaging==25.0
 pandas==2.3.1
 python-dateutil==2.9.0.post0
 pytz==2025.2
-PyYAML @ file:///croot/pyyaml_1728657952215/work
+PyYAML
 scikit-base==0.12.4
 scikit-learn==1.7.1
 scipy==1.16.1
